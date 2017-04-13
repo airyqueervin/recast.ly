@@ -3,19 +3,33 @@ class App extends React.Component {
     super();
     this.state = {
       videos: exampleVideoData,
-      current: exampleVideoData[0]
+      current: exampleVideoData[0],
+      query: ''
     };
     this.changeVideo = this.changeVideo.bind(this);
+    this.currentQuery = this.currentQuery.bind(this);
   }
 
   changeVideo(index) {
     this.setState({current: exampleVideoData[index]});
   }
 
+  setData() {
+    this.setData(/*get stuff from youtube*/);
+  }
+
+  // we need a currentQuery function that changes state of query 
+  currentQuery(value) {
+    console.log('bing', value);
+    this.setState({query: value});
+    console.log('bang', this.state);
+  }
+
+
   render() {
     return (
       <div>
-        <Nav />
+        <Nav currentQuery={this.currentQuery} />
         <div className="col-md-7">
           <VideoPlayer video={this.state.current}/>
         </div>
