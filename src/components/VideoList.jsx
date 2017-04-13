@@ -4,7 +4,7 @@ var VideoList = (props) => (
     // create a video list entry Tag
     // pass down the data
   <div className="video-list media">
-    {props.videos.map(video => <VideoListEntry video={video} />)}
+    {props.videos.map( (video, key) => <VideoListEntry key={key} video={video} />)}
   </div>
 );
 
