@@ -1,11 +1,6 @@
-// console.log('DATA', exampleVideoData);
 var VideoList = (props) => (
-  // for each videoList entry
-    // create a video list entry Tag
-    // pass down the data
-
   <div className="video-list media">
-    {props.videos.map( (video, key) => <VideoListEntry index={key} video={video} changeVideo={props.changeVideo}/>)}
+    {props.videos.map( (video, key) => <VideoListEntry key={key} index={key} video={video} changeVideo={props.changeVideo}/>)}
   </div>
 );
 

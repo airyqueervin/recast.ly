@@ -5,12 +5,9 @@ class Search extends React.Component {
       value: ''
     };
     this.handleChange = this.handleChange.bind(this);
-    console.log('THIS IS PROPS!!!', this.props);
   }
 
   handleChange(e) {
-    console.log('E In handleChange', e.target.value);
-    // console.log(this.props.currentQuery)
     this.props.currentQuery(e.target.value);
     this.setState({value: e.target.value});
   }
