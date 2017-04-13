@@ -1,8 +1,8 @@
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      videos: exampleVideoData,
+      videos: [],
       current: exampleVideoData[0],
       query: ''
     };
@@ -11,18 +11,21 @@ class App extends React.Component {
   }
 
   changeVideo(index) {
-    this.setState({current: exampleVideoData[index]});
+    this.setState({current: this.state.videos[index]});
   }
 
-  setData() {
-    this.setData(/*get stuff from youtube*/);
-  }
-
-  // we need a currentQuery function that changes state of query 
   currentQuery(value) {
-    console.log('bing', value);
     this.setState({query: value});
-    console.log('bang', this.state);
+  }
+
+  componentDidMount() {
+    this.searchTheTubes({ key: window.YOUTUBE_API_KEY, query: this.state.query, max: 5});
+  }
+
+  searchTheTubes(options) {
+    this.props.searchYouTube( options, function(result) {
+      this.setState({videos: result, current: result[0]});
+    }.bind(this));
   }
 
 
