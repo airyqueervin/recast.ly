@@ -16,6 +16,7 @@ class App extends React.Component {
 
   currentQuery(value) {
     this.setState({query: value});
+    this.searchTheTubes({ key: window.YOUTUBE_API_KEY, query: this.state.query, max: 5});
   }
 
   componentDidMount() {
